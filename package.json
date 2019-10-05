@@ -1,0 +1,26 @@
+{
+  "name": "docker-node-example",
+  "version": "1.0.0",
+  "description": "Simple example of how to dockerize a Node.js and MongoDB application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TannerGabriel/docker-node-mongodb.git"
+  },
+  "keywords": [
+    "Node",
+    "MongoDB",
+    "Docker",
+    "DockerCompose"
+  ],
+  "author": "Tanner Gabriel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TannerGabriel/docker-node-mongodb/issues"
+  },
+  "homepage": "https://github.com/TannerGabriel/docker-node-mongodb#readme"
+}
