@@ -1,14 +1,14 @@
 <template>
-<!-- eslint-disable -->
+  <!-- eslint-disable -->
   <section>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
     <h1>TODOS</h1>
-    <input type="text" class="nes-input" id="todo-input" placeholder="Add todo...">  
+    <input type="text" class="nes-input" id="todo-input" placeholder="Add todo..." />
     <button v-on:click="addTodo">Add todo</button>
     <ul>
       <li v-for="todo in todos" :key="todo.text" class="flex">
         <label>
-          <input type="checkbox" class="nes-checkbox" v-on:click="removeTodo(todo._id)">
+          <input type="checkbox" class="nes-checkbox" v-on:click="removeTodo(todo._id)" />
           <span>&nbsp</span>
         </label>
         <span>{{ todo.title }}</span>
@@ -20,51 +20,56 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 
 /* eslint-disable */
 export default {
-  name: 'Main',
-  data: function () {
+  name: "Main",
+  data: function() {
     return {
-      todos: [] 
-    }
+      todos: []
+    };
   },
-  beforeMount(){
-    this.getTodos()
+  beforeMount() {
+    this.getTodos();
   },
   methods: {
-    addTodo: async function () {
+    addTodo: async function() {
       const element = document.getElementById("todo-input");
 
-      axios.post('http://localhost:3000/todo', {
+      axios.post(`${process.env.VUE_APP_API_URL}/todo`, {
         title: element.value
-      })   
-      this.todos.push({title: element.value})  
+      });
+      this.todos.push({ title: element.value });
     },
     removeTodo: function(id) {
-      axios.delete(`http://localhost:3000/todo/${id}`, () => {})   
-      const index = this.todos.findIndex(x => x._id === id)
+      axios.delete(`${process.env.VUE_APP_API_URL}/todo/${id}`, () => {});
+      const index = this.todos.findIndex(x => x._id === id);
       this.todos.splice(index, 1);
     },
-    getTodos: async function(){
-      const todos = await axios.get('http://localhost:3000/todo')
-      console.dir(todos)
+    getTodos: async function() {
+      const todos = await axios.get(`${process.env.VUE_APP_API_URL}/todo`);
+      console.dir(todos);
       todos.data.forEach(element => {
-        this.todos.push(element)
+        this.todos.push(element);
       });
     }
-  },
-}
+  }
+};
 </script>
 
 <style>
-html, body, pre, code, kbd, samp {
+html,
+body,
+pre,
+code,
+kbd,
+samp {
   font-family: "Press Start 2P";
 }
 
 body {
-  background: #20262E;
+  background: #20262e;
   padding: 20px;
 }
 
