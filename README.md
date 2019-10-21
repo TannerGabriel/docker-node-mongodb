@@ -4,6 +4,14 @@
 
 ## Quick Start
 
+First you need to create a .env file in the frontend directory and add a variable.
+
+```bash
+VUE_APP_API_URL=http://localhost:3000
+```
+
+Start the application
+
 ```bash
 # Run in Docker
 docker-compose up
