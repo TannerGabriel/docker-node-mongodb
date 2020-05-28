@@ -5,9 +5,11 @@ RUN npm install -g http-server
 WORKDIR /app
 
 COPY package*.json ./
-COPY .env ./
 
 RUN npm install
+
+ARG VUE_APP_API_URL
+ENV VUE_APP_API_URL $VUE_APP_API_URL
 
 COPY . .
 

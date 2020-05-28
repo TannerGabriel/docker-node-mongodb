@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import Api from '@/services/Api'
 
 /* eslint-disable */
 export default {
@@ -37,18 +37,18 @@ export default {
     addTodo: async function() {
       const element = document.getElementById("todo-input");
 
-      axios.post(`${process.env.VUE_APP_API_URL}/todo`, {
+      Api().post(`todo`, {
         title: element.value
       });
       this.todos.push({ title: element.value });
     },
     removeTodo: function(id) {
-      axios.delete(`${process.env.VUE_APP_API_URL}/todo/${id}`, () => {});
+      Api().delete(`todo/${id}`, () => {});
       const index = this.todos.findIndex(x => x._id === id);
       this.todos.splice(index, 1);
     },
     getTodos: async function() {
-      const todos = await axios.get(`${process.env.VUE_APP_API_URL}/todo`);
+      const todos = await Api().get(`todo`);
       console.dir(todos);
       todos.data.forEach(element => {
         this.todos.push(element);
