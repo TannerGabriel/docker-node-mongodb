@@ -4,22 +4,14 @@
 
 ## Quick Start
 
-First you need to create a .env file in the frontend directory and add a variable.
-
-```bash
-VUE_APP_API_URL=http://localhost:3000
-```
+The external IP is required for the website to access the API from other PCs. For that, I included a shell script that automatically gets your IP Address on Linux, or lets you add a custom one if you are on Windows.
 
 Start the application
 
 ```bash
-# Run in Docker
+# Building the application using the external IP as an Argument
+./build-docker.sh
+
+# Running the application in Docker
 docker-compose up
-# use -d flag to run in background
-
-# Tear down
-docker-compose down
-
-# To re-build
-docker-compose build
 ```
